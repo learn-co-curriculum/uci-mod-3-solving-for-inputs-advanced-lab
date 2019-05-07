@@ -19,29 +19,13 @@ describe 'Unfamiliar Object Oriented Code' do
       expect(new_school.courses[new_school.courses.keys[0]].teacher).to eq(new_school.teachers[0])
     end
 
-    it '`create_five_students`' do
-      student_names = [
-        { first_name: 'Peter', last_name: 'Ma', email: 'zelda@yahoo.com' },
-        { first_name: 'Ben', last_name: 'Donna', email: 'photocopies@geocities.com' },
-        { first_name: 'John', last_name: 'Lombardo', email: 'batswinger@aol.com' },
-        { first_name: 'AJ', last_name: "O'Reilly", email: 'trackwalker@earthlink.com' },
-        { first_name: 'Adam', last_name: 'Osborne', email: 'badninja@hotmail.com' }
-      ]
+    it '`create_five_students` returns an instance of Registrar with five Student instances enrolled' do
 
-      expect(create_five_students).to contain_exactly('Peter Ma', 'Ben Donna', 'John Lombardo', "AJ O'Reilly", 'Adam Osborne')
+      expect(create_five_students).to be_a(Registrar)
+      expect(create_five_students.students).to be_an(Array)
+      expect(create_five_students.students.length).to eq(5)
+      expect(create_five_students.students).to all(be_a(Student))
     end
 
-    it '`enroll_a_student`' do
-      school = enroll_a_student
-
-      expect(school.courses.length).to eq(1)
-      expect(school.courses[school.courses.keys[0]].students.keys.length).to eq(1)
-    end
-
-    it '`apply_grade`' do
-      school = apply_grade
-
-      expect(school.courses[school.courses.keys[0]].students[school.registrar.students[0]]).to eq(95)
-    end
   end
 end
