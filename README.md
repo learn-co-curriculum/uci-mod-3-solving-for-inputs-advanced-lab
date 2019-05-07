@@ -7,7 +7,7 @@
 
 ## Instructions
 
-In this lab, we will be practice reading object oriented code. In the `lib`
+In this lab, we will be practice reading object-oriented code. In the `lib`
 folder, there are a number of existing, related Ruby `Class`es. Your task is to
 read through the code, then use your understanding of it to fill in the methods
 in `answers.rb`.
