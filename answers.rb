@@ -4,6 +4,7 @@ require_relative './lib/student.rb'
 
 def create_school
   # Return a new instance of school with a name and adress of your choosing
+  School.new('John Jay', 'Cross River')
 end
 
 def set_up_a_course
@@ -13,23 +14,25 @@ def set_up_a_course
   # - Hire a teacher to that position
   # - Create a course for the teacher to teach
   # Return instance of school
+  school = create_school
+  school.create_position('History Teacher', '$45,000', 'Teacher', false)
+  school.hire_teacher('John', 'Smith', 'john.smith@johnjayhighschool.edu', school.positions['History Teacher'])
+  school.create_course('Early Civilization', 'History', school.teachers[0])
+  school
 end
 
 def create_five_students
   # Use create_school to create an instance of School
+  # Create a registrar
   # Add five instances of Student to the new school using the hashes of data above
   # Don't enroll students in any classes, but make sure they're on the Registrar!
-  # Return an array of the *full names* of each student
-end
-
-def enroll_a_student
-  # Using the school instances you created in set_up_a_course
-  # Create a student and enroll the student in your course
-  # Return the newly updated instance of School
-end
-
-def apply_grade
-  # Using the course and students set up in `enroll_students`, change the
-  # students grade to 95
-  # Return the instance of School
+  # Return the registrar
+  school = create_school
+  registrar = Registrar.new(school)
+  registrar.enroll_student("Ada", "Lovelace", "ada@techpioneer.com")
+  registrar.enroll_student("Hedy", "Lamarr", 'hedy@techpioneer.com')
+  registrar.enroll_student("Alan", "Turing", "alan@techpioneer.com")
+  registrar.enroll_student("Grace", "Hopper", "grace@techpioneer.com")
+  registrar.enroll_student("Katherine", "Johnson", "katherine@techpioneer.com")
+  registrar
 end
